@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Northland Official Government</title>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --north-blue: #87CEFA;
+            --bg-main: #f2f4f6; 
+            --bg-card: #ffffff;
+            --text-dark: #1a1a1a;
+            --border-color: #e0e0e0;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Urbanist', sans-serif;
+            margin: 0;
+            background-color: var(--bg-main);
+            color: var(--text-dark);
+            line-height: 1.6;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Mobile Responsive Header */
+        header {
+            padding: 20px 5%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            background: var(--bg-card);
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            header {
+                padding: 25px 8%;
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: left;
+            }
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            text-decoration: none;
+            color: var(--north-blue);
+            text-transform: uppercase;
+        }
+
+        .flag-img {
+            height: 35px;
+            border-radius: 0; 
+            border: 1px solid var(--border-color);
+        }
+
+        nav {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Hero Section Scaling */
+        .hero {
+            padding: 50px 5%;
+            background-color: var(--bg-main);
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .hero {
+                padding: 80px 8%;
+                text-align: left;
+            }
+        }
+
+        .hero h1 {
+            font-size: 2.8rem; /* Smaller for mobile */
+            margin: 0;
+            color: var(--north-blue);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            min-height: 1.2em;
+            word-break: break-word;
+        }
+
+        @media (min-width: 768px) {
+            .hero h1 { font-size: 4rem; }
+        }
+
+        .hero p {
+            font-size: 1rem;
+            max-width: 600px;
+        }
+
+        /* Responsive Grid */
+        .container {
+            padding: 30px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .container { padding: 60px 8%; }
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr; /* Stack on mobile */
+            gap: 20px;
+        }
+
+        @media (min-width: 640px) {
+            .grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (min-width: 1024px) {
+            .grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        .card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:active { transform: scale(0.98); } /* Feedback for touch */
+
+        @media (min-width: 768px) {
+            .card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 15px 30px rgba(0,0,0,0.06);
+            }
+        }
+
+        .card h2 {
+            margin-top: 0;
+            font-size: 1.4rem;
+            color: var(--north-blue);
+        }
+
+        /* Page Content */
+        .page-content { 
+            display: none; 
+            padding: 40px 5%; 
+            max-width: 1000px; 
+            margin: 0 auto; 
+        }
+        .active { display: block; }
+
+        .btn {
+            background-color: var(--north-blue);
+            color: white;
+            padding: 14px 28px;
+            width: 100%; /* Full width on mobile */
+            text-align: center;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 25px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+
+        @media (min-width: 480px) {
+            .btn { width: auto; }
+        }
+
+        .back-btn {
+            color: var(--north-blue);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 30px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        footer {
+            padding: 40px 5%;
+            text-align: center;
+            font-size: 0.85rem;
+            background-color: var(--bg-main);
+        }
+
+        .disclaimer {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px dashed #ccc;
+            border-radius: 15px;
+            color: #888;
+            font-size: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="javascript:void(0)" onclick="showPage('home')" class="logo">
+        <img src="https://i.ibb.co/zhg5gddd/Frame-297-1.png" class="flag-img" alt="Northland Flag">
+        Northland Government
+    </a>
+    <nav>
+        <a onclick="showPage('about')">About</a>
+        <a onclick="showPage('laws')">Laws</a>
+        <a onclick="showPage('contact')">Contact</a>
+    </nav>
+</header>
+
+<div id="home" class="page-content active">
+    <div class="hero">
+        <h1 id="typewriter-title"></h1>
+        <p>EU Member State | Strategic North Atlantic Security Hub</p>
+    </div>
+
+    <div class="container">
+        <div class="grid">
+            <div class="card" onclick="showPage('airforce')">
+                <h2>Join the Airforce</h2>
+                <p>Official NAF recruitment portal for maritime and airspace defense.</p>
+            </div>
+            <div class="card" onclick="showPage('passport')">
+                <h2>E-Passport</h2>
+                <p>EU-standard biometric ID services for all Northland citizens.</p>
+            </div>
+            <div class="card" onclick="showPage('immigration')">
+                <h2>E-Visas</h2>
+                <p>Gateway for Schengen-aligned travel and residency requests.</p>
+            </div>
+            <div class="card" onclick="showPage('laws')">
+                <h2>Laws</h2>
+                <p>Constitution and North Atlantic Maritime Directives.</p>
+            </div>
+            <div class="card" onclick="showPage('about')">
+                <h2>About Us</h2>
+                <p>Our history and location between the UK and Iceland.</p>
+            </div>
+            <div class="card" onclick="showPage('contact')">
+                <h2>Contact Us</h2>
+                <p>Reach official departments for administrative support.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="airforce" class="page-content">
+    <a class="back-btn" onclick="showPage('home')">← Back to Portal</a>
+    <h1>Join the Airforce</h1>
+    <p>The Northland Airforce (NAF) is recruiting personnel for maritime patrol.</p>
+    <button class="btn" onclick="location.href='https://forms.gle/ekY4yTFKjYxHGmoZ7'">Access Recruitment Form</button>
+</div>
+
+<div id="about" class="page-content">
+    <a class="back-btn" onclick="showPage('home')">← Back</a>
+    <h1>About Northland</h1>
+    <p>Sovereign nation and EU Member State located between the UK and Iceland.</p>
+</div>
+
+<div id="contact" class="page-content">
+    <a class="back-btn" onclick="showPage('home')">← Back</a>
+    <h1>Contact Us</h1>
+    <p>Email: <strong>northlandgov@gmail.com</strong></p>
+</div>
+
+<div id="laws" class="page-content">
+    <a class="back-btn" onclick="showPage('home')">← Back</a>
+    <h1>National Laws</h1>
+    <p>Constitution and European Union Integration Mandates.</p>
+</div>
+
+<div id="passport" class="page-content">
+    <a class="back-btn" onclick="showPage('home')">← Back</a>
+    <h1>E-Passport</h1>
+    <p>Citizen biometric documentation portal.</p>
+</div>
+
+<div id="immigration" class="page-content">
+    <a class="back-btn" onclick="showPage('home')">← Back</a>
+    <h1>E-Visa Services</h1>
+    <p>Schengen-aligned visa applications.</p>
+</div>
+
+<footer>
+    <p>© 2025 Northland Government | EU Member State</p>
+    <div class="disclaimer">
+        <strong>FICTIONAL CONTENT:</strong> Northland is a fictional entity for world-building. This site provides no real-world services.
+    </div>
+</footer>
+
+<script>
+    const text = "Northland";
+    const speed = 120;
+    let i = 0;
+
+    function typeWriter() {
+        if (i < text.length) {
+            document.getElementById("typewriter-title").innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+        }
+    }
+
+    window.onload = typeWriter;
+
+    function showPage(pageId) {
+        document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+        const target = document.getElementById(pageId);
+        if(target) {
+            target.classList.add('active');
+            window.scrollTo(0,0);
+        }
+    }
+</script>
+
+</body>
+</html>
