@@ -15,17 +15,13 @@
             --gov-accent: #d4af37;
         }
 
-        /* REMOVED ALL ROUNDED CORNERS */
         * { box-sizing: border-box; border-radius: 0 !important; margin: 0; padding: 0; }
 
         body { font-family: 'Roboto', sans-serif; background: #fff; color: var(--gov-dark); line-height: 1.6; }
 
-        /* OFFICIAL BANNER */
         .top-banner { background: #f0f0f0; border-bottom: 1px solid #ddd; padding: 5px 5%; display: flex; justify-content: space-between; align-items: center; font-size: 12px; }
         .gov-label { font-weight: 500; display: flex; align-items: center; gap: 8px; }
-        .gov-label i { color: #555; }
 
-        /* HEADER */
         header { background: #fff; padding: 20px 5%; border-bottom: 5px solid var(--gov-blue); display: flex; flex-direction: column; align-items: center; text-align: center; }
         @media (min-width: 768px) { header { flex-direction: row; justify-content: space-between; text-align: left; } }
 
@@ -34,59 +30,50 @@
         .logo-text h1 { font-size: 1.8rem; font-weight: 700; color: var(--gov-blue); letter-spacing: 1px; }
         .logo-text p { font-size: 0.8rem; text-transform: uppercase; font-weight: 500; color: #666; }
 
-        /* NAVIGATION */
         nav { background: var(--gov-blue); padding: 0 5%; display: flex; flex-wrap: wrap; }
         nav a { color: #fff; text-decoration: none; padding: 15px 20px; font-size: 0.9rem; font-weight: 500; cursor: pointer; }
         nav a:hover { background: rgba(255,255,255,0.1); }
 
-        /* HERO SECTION */
         .hero { background: var(--gov-light-blue); padding: 50px 5%; border-bottom: 1px solid #c8d9eb; }
         .hero h2 { font-size: 2.2rem; color: var(--gov-blue); margin-bottom: 15px; }
         .hero p { max-width: 800px; font-size: 1.1rem; color: #444; }
 
-        /* MAIN CONTENT */
         .container { padding: 40px 5%; max-width: 1200px; margin: 0 auto; }
         .page { display: none; }
         .page.active { display: block; }
 
-        /* SERVICE TILES */
         .service-list { display: grid; grid-gap: 20px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); margin-top: 30px; }
-        .service-box { border: 1px solid #ddd; padding: 25px; background: #fff; border-top: 4px solid var(--gov-blue); transition: box-shadow 0.2s; cursor: pointer; }
+        .service-box { border: 1px solid #ddd; padding: 25px; background: #fff; border-top: 4px solid var(--gov-blue); cursor: pointer; }
         .service-box:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
         .service-box h3 { margin-bottom: 10px; color: var(--gov-blue); }
-        .service-box p { font-size: 0.9rem; color: #666; }
 
-        /* AIRFORCE PAGE - NO FANCY WORDS */
+        /* COMPANIES PAGE STYLES */
+        .company-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 30px; }
+        .company-card { border: 1px solid #ddd; padding: 30px; text-align: center; text-decoration: none; color: inherit; display: flex; flex-direction: column; align-items: center; transition: transform 0.2s; }
+        .company-card:hover { border-color: var(--gov-blue); transform: translateY(-2px); }
+        .company-card img { height: 80px; margin-bottom: 20px; }
+        .company-card h4 { color: var(--gov-blue); margin-bottom: 10px; text-transform: uppercase; }
+        .company-card p { font-size: 0.85rem; color: #666; }
+
         .dept-header { border-bottom: 2px solid #eee; margin-bottom: 30px; padding-bottom: 10px; }
         .asset-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
         .asset-item { border: 1px solid #eee; background: #fafafa; }
         .asset-item img { width: 100%; height: 180px; object-fit: cover; }
         .asset-info { padding: 15px; }
-        .asset-info h4 { color: var(--gov-blue); font-size: 1.1rem; }
-        .asset-info p { font-size: 0.85rem; margin-top: 5px; }
 
-        /* FORM STYLES */
         .form-group { margin-bottom: 20px; max-width: 500px; }
         label { display: block; font-weight: 600; margin-bottom: 5px; font-size: 0.9rem; }
         input { width: 100%; padding: 12px; border: 1px solid #ccc; font-size: 1rem; }
         .submit-btn { background: var(--gov-blue); color: #fff; padding: 12px 30px; border: none; font-weight: 600; cursor: pointer; margin-top: 10px; }
-        .submit-btn:hover { background: #004080; }
 
-        /* ID CARD RESULT */
         #id-display { margin-top: 30px; display: none; background: #f9f9f9; padding: 20px; border: 1px dashed #ccc; }
         .id-card { width: 100%; max-width: 400px; background: #fff; border: 2px solid var(--gov-blue); padding: 20px; display: flex; gap: 20px; }
         .id-photo-box { width: 100px; height: 120px; background: #eee; border: 1px solid #ddd; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #bbb; }
-        .id-details h5 { font-size: 0.7rem; color: #888; text-transform: uppercase; }
-        .id-details p { font-weight: 700; margin-bottom: 10px; }
 
-        /* FOOTER */
         footer { background: var(--gov-dark); color: #fff; padding: 50px 5%; margin-top: 50px; }
         .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; max-width: 1200px; margin: 0 auto; }
         .footer-col h4 { margin-bottom: 15px; border-bottom: 1px solid #555; padding-bottom: 5px; }
-        .footer-col a { color: #ccc; text-decoration: none; display: block; font-size: 0.9rem; margin-bottom: 8px; }
-        .social-icons { margin-top: 20px; display: flex; gap: 15px; font-size: 1.5rem; }
-        .social-icons a { color: #fff; }
-
+        .footer-col a { color: #ccc; text-decoration: none; display: block; font-size: 0.9rem; margin-bottom: 8px; cursor: pointer; }
         .disclaimer { font-size: 11px; color: #888; margin-top: 30px; text-align: center; border-top: 1px solid #444; padding-top: 20px; }
     </style>
 </head>
@@ -108,15 +95,14 @@
             <p>Department of State Services</p>
         </div>
     </a>
-    <div style="font-size: 0.8rem; color: #666; font-weight: 500;">
-        Tuesday, 30 December 2025
-    </div>
+    <div style="font-size: 0.8rem; color: #666; font-weight: 500;">Tuesday, 30 December 2025</div>
 </header>
 
 <nav>
     <a onclick="showPage('home')">Home</a>
     <a onclick="showPage('passport')">Passports</a>
     <a onclick="showPage('airforce')">Airforce</a>
+    <a onclick="showPage('companies')">Government Affiliated Companies</a>
     <a href="https://discord.gg/4EdxgchNBM" target="_blank">Contact Us</a>
 </nav>
 
@@ -137,10 +123,27 @@
                 <h3>Airforce Department</h3>
                 <p>Information on the Northland Airforce fleet and current recruitment opportunities.</p>
             </div>
-            <div class="service-box">
-                <h3>Visas & Immigration</h3>
-                <p>Information regarding travel and residency permits for foreign nationals.</p>
+            <div class="service-box" onclick="showPage('companies')">
+                <h3>Business & Trade</h3>
+                <p>View government-approved companies and economic partners of Northland.</p>
             </div>
+        </div>
+    </div>
+</div>
+
+<div id="companies" class="page">
+    <div class="container">
+        <div class="dept-header">
+            <h2>Government Affiliated Companies</h2>
+            <p>Authorized business partners and state-recognized organizations operating within Northland.</p>
+        </div>
+
+        <div class="company-grid">
+            <a href="https://northlandgov.github.io/cordial/" target="_blank" class="company-card">
+                <img src="https://i.ibb.co/QFx31J1T/Frame-314.png" alt="Cordial">
+                <h4>Cordial</h4>
+                <p>Official Government Partner</p>
+            </a>
         </div>
     </div>
 </div>
@@ -151,86 +154,45 @@
             <h2>Northland Airforce (NAF)</h2>
             <p>The military arm responsible for the defense of Northland airspace.</p>
         </div>
-
-        <h3>Current Fleet Inventory</h3>
-        <p style="margin-bottom: 20px; font-size: 0.9rem;">The following aircraft are currently in active service within the Northland territory.</p>
-        
         <div class="asset-grid">
             <div class="asset-item">
                 <img src="https://i.ibb.co/HTzJqryh/6291322-16x9.avif" alt="F-16">
-                <div class="asset-info">
-                    <h4>F-16 Viper</h4>
-                    <p>Multirole Fighter Jet</p>
-                    <p><strong>32 Units Active</strong></p>
-                </div>
+                <div class="asset-info"><h4>F-16 Viper</h4><p><strong>32 Units Active</strong></p></div>
             </div>
             <div class="asset-item">
                 <img src="https://i.ibb.co/N2V4CYdh/F35-US-military-800x500.jpg" alt="F-35">
-                <div class="asset-info">
-                    <h4>F-35B Lightning II</h4>
-                    <p>Stealth Combat Aircraft</p>
-                    <p><strong>12 Units Active</strong></p>
-                </div>
+                <div class="asset-info"><h4>F-35B Lightning II</h4><p><strong>12 Units Active</strong></p></div>
             </div>
             <div class="asset-item">
                 <img src="https://i.ibb.co/3GXCXcZ/C-17-test-sortie.jpg" alt="C-17">
-                <div class="asset-info">
-                    <h4>C-17 Globemaster III</h4>
-                    <p>Transport & Logistics</p>
-                    <p><strong>20 Units Active</strong></p>
-                </div>
+                <div class="asset-info"><h4>C-17 Globemaster III</h4><p><strong>20 Units Active</strong></p></div>
             </div>
             <div class="asset-item">
                 <img src="https://i.ibb.co/gMzqnc1s/USS-Gerald-R-Ford-CVN-78-underway-in-the-Atlantic-Ocean-on-9-October-2022-221009-N-TL968-1248.jpg" alt="Carrier">
-                <div class="asset-info">
-                    <h4>Aircraft Carrier</h4>
-                    <p>Naval Operations</p>
-                    <p><strong>3 Vessels Active</strong></p>
-                </div>
+                <div class="asset-info"><h4>Aircraft Carrier</h4><p><strong>3 Vessels Active</strong></p></div>
             </div>
         </div>
-
-        <div style="background: #f4f4f4; padding: 30px; margin-top: 40px; border-left: 5px solid var(--gov-accent);">
-            <h4>Join the Airforce</h4>
-            <p>We are currently looking for new pilots and technical crew. Please fill out our official application form below.</p>
-            <button class="submit-btn" style="background: var(--gov-accent); color: #000;" onclick="window.open('https://forms.gle/ekY4yTFKjYxHGmoZ7')">Open Application Form</button>
-        </div>
+        <button class="submit-btn" style="background: var(--gov-accent); color: #000; margin-top: 30px;" onclick="window.open('https://forms.gle/ekY4yTFKjYxHGmoZ7')">Open Application Form</button>
     </div>
 </div>
 
 <div id="passport" class="page">
     <div class="container">
         <h2>Passport Application</h2>
-        <p style="margin-bottom: 30px;">Please fill out the form accurately to apply for your Northland Citizen ID.</p>
-        
-        <div class="form-group">
-            <label>Username</label>
-            <input type="text" id="p-name" placeholder="Enter your username">
-        </div>
-        <div class="form-group">
-            <label>Date of Birth</label>
-            <input type="date" id="p-dob">
-        </div>
-        <div class="form-group">
-            <label>Email Address</label>
-            <input type="email" id="p-email" placeholder="example@email.com">
-        </div>
+        <div class="form-group"><label>Username</label><input type="text" id="p-name" placeholder="Enter your username"></div>
+        <div class="form-group"><label>Date of Birth</label><input type="date" id="p-dob"></div>
+        <div class="form-group"><label>Email Address</label><input type="email" id="p-email" placeholder="example@email.com"></div>
         <button class="submit-btn" id="p-btn" onclick="submitPassport()">Send Application</button>
-
         <div id="id-display">
             <h3>Your ID has been generated:</h3>
             <div class="id-card">
                 <div class="id-photo-box"><i class="fas fa-user"></i></div>
                 <div class="id-details">
-                    <h5>Name</h5>
-                    <p id="res-name">---</p>
-                    <h5>ID Number</h5>
-                    <p id="res-num">---</p>
-                    <h5>Status</h5>
+                    <h5>Name</h5><p id="res-name">---</p>
+                    <h5>ID Number</h5><p id="res-num">---</p>
                     <p style="color: green; font-size: 0.8rem;">OFFICIALLY REGISTERED</p>
                 </div>
             </div>
-            <p style="margin-top: 15px; font-size: 0.8rem; color: #666;">A confirmation has been sent to your email address.</p>
         </div>
     </div>
 </div>
@@ -239,10 +201,9 @@
     <div class="footer-content">
         <div class="footer-col" style="flex: 1.5;">
             <h4>Government of Northland</h4>
-            <p style="font-size: 0.85rem; color: #ccc;">Providing modern government services for the digital age. Built for transparency and accessibility.</p>
-            <div class="social-icons">
-                <a href="https://tiktok.com/@northland.gov" target="_blank"><i class="fab fa-tiktok"></i></a>
-                <a href="https://discord.gg/4EdxgchNBM" target="_blank"><i class="fab fa-discord"></i></a>
+            <div style="display: flex; gap: 15px; font-size: 1.5rem; margin-top: 15px;">
+                <a href="https://tiktok.com/@northland.gov" target="_blank" style="color:#fff;"><i class="fab fa-tiktok"></i></a>
+                <a href="https://discord.gg/4EdxgchNBM" target="_blank" style="color:#fff;"><i class="fab fa-discord"></i></a>
             </div>
         </div>
         <div class="footer-col">
@@ -250,60 +211,35 @@
             <a onclick="showPage('home')">Home</a>
             <a onclick="showPage('passport')">Apply for Passport</a>
             <a onclick="showPage('airforce')">Airforce Info</a>
-        </div>
-        <div class="footer-col">
-            <h4>Support</h4>
-            <a href="https://discord.gg/4EdxgchNBM" target="_blank">Contact Support</a>
-            <a>Privacy Policy</a>
-            <a>Terms of Use</a>
+            <a onclick="showPage('companies')">Affiliated Companies</a>
         </div>
     </div>
-    <div class="disclaimer">
-        FICTIONAL NATION ROLEPLAY - NORTHLAND IS NOT A RECOGNIZED COUNTRY BY THE UNITED NATIONS.
-    </div>
+    <div class="disclaimer">FICTIONAL NATION ROLEPLAY - NORTHLAND IS NOT A RECOGNIZED COUNTRY BY THE UNITED NATIONS.</div>
 </footer>
 
 <script>
     (function(){ emailjs.init("ZajunZy7xtegWj6gQ"); })();
-
     function showPage(pageId) {
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
         document.getElementById(pageId).classList.add('active');
         window.scrollTo(0,0);
     }
-
     function submitPassport() {
         const name = document.getElementById('p-name').value;
         const dob = document.getElementById('p-dob').value;
         const email = document.getElementById('p-email').value;
         const btn = document.getElementById('p-btn');
-
-        if(!name || !dob || !email) {
-            alert("Please fill in all fields.");
-            return;
-        }
-
-        btn.innerText = "Sending...";
-        btn.disabled = true;
-
+        if(!name || !dob || !email) { alert("Please fill in all fields."); return; }
+        btn.innerText = "Sending..."; btn.disabled = true;
         const idNum = "NL-" + Math.floor(100000 + Math.random() * 900000);
-
         emailjs.send('service_s17t8qu', 'template_o0p4w9o', {
-            to_name: name,
-            user_email: email,
-            passport_num: idNum,
-            dob: dob,
-            mrz_data: "P<NORTHLAND" + name.toUpperCase() + "<<<<<<<<<" + idNum
+            to_name: name, user_email: email, passport_num: idNum, dob: d, mrz_data: "P<NORTHLAND" + name.toUpperCase() + "<<<<<<<<<" + idNum
         }).then(() => {
             document.getElementById('res-name').innerText = name.toUpperCase();
             document.getElementById('res-num').innerText = idNum;
             document.getElementById('id-display').style.display = 'block';
             btn.innerText = "Application Sent";
-        }, () => {
-            alert("Error sending application.");
-            btn.disabled = false;
-            btn.innerText = "Send Application";
-        });
+        }, () => { alert("Error sending application."); btn.disabled = false; btn.innerText = "Send Application"; });
     }
 </script>
 </body>
