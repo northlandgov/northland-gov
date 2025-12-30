@@ -3,389 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Northland | Official Government Portal</title>
+    <title>Northland | Official Portal</title>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         :root {
-            --eu-blue: #003399;
+            --gov-blue: #003399;
             --gov-black: #000000;
-            --gov-gray: #f2f2f2;
-            --gov-border: #333333;
             --naf-gold: #c5a059;
-            --accent-blue: #0056b3;
         }
 
-        * { box-sizing: border-box; border-radius: 0 !important; transition: none !important; }
+        * { box-sizing: border-box; border-radius: 0 !important; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #fff; color: #000; line-height: 1.4; overflow-x: hidden; }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            background-color: #ffffff;
-            color: var(--gov-black);
-            line-height: 1.6;
-        }
+        /* TOP IDENTITY BAR */
+        .top-id { background: #000; color: #fff; padding: 10px 5%; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .socials { display: flex; gap: 15px; }
+        .socials a { color: #fff; text-decoration: none; }
 
-        /* Top Identity Bar */
-        .gov-banner {
-            background: #000;
-            color: #fff;
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            padding: 10px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        /* HEADER */
+        header { border-bottom: 3px solid #000; padding: 20px 5%; display: flex; flex-direction: column; gap: 15px; background: #fff; }
+        @media (min-width: 768px) { header { flex-direction: row; justify-content: space-between; align-items: center; } }
+        
+        .brand { display: flex; align-items: center; gap: 15px; text-decoration: none; color: #000; }
+        .brand img { height: 45px; border: 1px solid #ddd; }
+        .brand-text h1 { font-size: 1.5rem; font-weight: 900; letter-spacing: -1px; }
+        .brand-text span { font-size: 0.65rem; font-weight: 700; color: #666; text-transform: uppercase; display: block; }
 
-        .social-indicators {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
+        nav { display: flex; gap: 20px; border-top: 1px solid #eee; padding-top: 15px; }
+        @media (min-width: 768px) { nav { border: none; padding: 0; gap: 30px; } }
+        nav a { font-size: 0.75rem; font-weight: 900; text-transform: uppercase; text-decoration: none; color: #000; cursor: pointer; }
 
-        .social-link {
-            color: #fff;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .social-link:hover { color: var(--naf-gold); }
-
-        header {
-            padding: 40px 8%;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            background: #fff;
-            border-bottom: 4px solid var(--gov-black);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            text-decoration: none;
-            color: var(--gov-black);
-        }
-
-        .logo-text h1 { margin: 0; font-size: 1.8rem; font-weight: 900; letter-spacing: -1px; line-height: 1; }
-        .logo-text span { font-size: 0.7rem; font-weight: 700; color: #666; text-transform: uppercase; letter-spacing: 1px; }
-
-        .flag-img { height: 50px; border: 1px solid #000; }
-
-        nav { display: flex; gap: 40px; }
-        nav a { 
-            color: var(--gov-black); 
-            text-decoration: none; 
-            font-size: 0.8rem; 
-            font-weight: 800; 
-            text-transform: uppercase;
-            padding: 10px 0;
-            border-bottom: 3px solid transparent;
-        }
-        nav a:hover { border-bottom: 3px solid var(--eu-blue); }
-
-        .hero { padding: 100px 8%; background: var(--gov-gray); border-bottom: 1px solid #ddd; }
-        .hero h1 { font-size: 4.5rem; font-weight: 900; margin: 0; letter-spacing: -2px; line-height: 0.9; }
-        .hero p { max-width: 600px; font-size: 1.1rem; margin-top: 20px; color: #444; }
-
-        .container { padding: 80px 8%; max-width: 1400px; margin: 0 auto; }
-
-        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #ddd; border: 1px solid #ddd; }
-        .card { background: #fff; padding: 50px; cursor: pointer; }
-        .card:hover { background: #f9f9f9; outline: 3px solid var(--gov-black); z-index: 10; }
-        .card h2 { font-size: 1.4rem; font-weight: 800; text-transform: uppercase; margin-top: 0; }
-        .card p { font-size: 0.9rem; color: #555; margin-bottom: 30px; }
-        .card-link { font-weight: 800; font-size: 0.75rem; text-transform: uppercase; color: var(--eu-blue); text-decoration: none; }
-
-        .page-content { display: none; padding: 60px 8%; }
+        /* PAGE CONTENT */
+        .page { display: none; padding: 40px 5%; max-width: 1200px; margin: 0 auto; }
         .active { display: block; }
 
-        /* AIRFORCE DASHBOARD */
-        #airforce {
-            background-image: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://i.ibb.co/67QNhmMp/f-16-fighting-falcons-lurking-in-the-dark-look-peaceful-theyre-anything-but-12.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            min-height: 100vh;
-            color: white;
-        }
+        /* HOME SERVICE GRID */
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 900; letter-spacing: -2px; line-height: 0.9; margin-bottom: 20px; }
+        .service-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 40px; }
+        @media (min-width: 768px) { .service-grid { grid-template-columns: repeat(3, 1fr); } }
+        .service-card { border: 2px solid #000; padding: 30px; cursor: pointer; min-height: 200px; display: flex; flex-direction: column; justify-content: space-between; }
+        .service-card:hover { background: #f2f2f2; }
+        .service-card h2 { font-size: 1.2rem; font-weight: 900; text-transform: uppercase; }
 
-        .naf-status-bar {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-            border: 1px solid rgba(255,255,255,0.2);
-            padding: 20px;
-        }
+        /* AIRFORCE COMMAND CENTER */
+        #airforce { background: #0a0a0a; color: #fff; max-width: 100%; padding: 60px 5%; }
+        .tac-header { border-left: 5px solid var(--naf-gold); padding-left: 20px; margin-bottom: 40px; display: flex; justify-content: space-between; align-items: center; }
+        .tac-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        @media (min-width: 992px) { .tac-grid { grid-template-columns: repeat(2, 1fr); } }
+        .asset-card { background: #1a1a1a; border: 1px solid #333; display: flex; flex-direction: column; overflow: hidden; }
+        @media (min-width: 600px) { .asset-card { flex-direction: row; height: 180px; } }
+        .asset-img { width: 100%; height: 200px; background-size: cover; background-position: center; }
+        @media (min-width: 600px) { .asset-img { width: 220px; height: 100%; } }
+        .asset-data { padding: 25px; flex: 1; }
+        .asset-data h3 { font-size: 1.1rem; color: var(--naf-gold); font-family: 'JetBrains Mono'; margin-bottom: 5px; }
+        .asset-data .count { font-size: 1.8rem; font-weight: 900; }
 
-        .status-item { border-left: 3px solid var(--naf-gold); padding-left: 20px; }
-        .status-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: var(--naf-gold); }
-        .status-value { font-size: 1.8rem; font-weight: 900; display: block; }
+        /* BIOMETRICS & ID CARD */
+        .input-box { margin-bottom: 20px; }
+        label { display: block; font-size: 0.7rem; font-weight: 900; text-transform: uppercase; margin-bottom: 5px; }
+        input { width: 100%; padding: 15px; border: 2px solid #000; font-family: inherit; font-weight: 700; font-size: 1rem; }
+        .btn { background: #000; color: #fff; padding: 20px; width: 100%; font-weight: 900; text-transform: uppercase; border: none; cursor: pointer; }
+        .btn:hover { background: var(--gov-blue); }
 
-        .fleet-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-        .fleet-card { border: 1px solid rgba(255,255,255,0.2); display: flex; background: rgba(0,0,0,0.3); }
-        .fleet-img { width: 40%; height: 200px; background-size: cover; background-position: center; border-right: 1px solid rgba(255,255,255,0.2); }
-        .fleet-info { width: 60%; padding: 25px; }
-        .fleet-info h3 { margin: 0; font-size: 1.2rem; font-weight: 900; }
-        .fleet-info p { font-size: 0.75rem; color: #ccc; text-transform: uppercase; margin: 5px 0; }
+        #id-result { margin-top: 40px; display: none; }
+        .id-card { width: 100%; max-width: 420px; background: #fff; border: 1px solid #000; padding: 25px; position: relative; color: #000; box-shadow: 12px 12px 0 #eee; }
+        .id-body { display: flex; gap: 20px; margin-top: 15px; }
+        .id-photo { width: 110px; height: 130px; background: #f0f0f0; border: 1px solid #000; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: #ccc; }
+        .id-info span { font-size: 1.1rem; font-weight: 900; display: block; margin-bottom: 8px; }
 
-        .form-box { background: #fff; padding: 60px; border: 1px solid #000; max-width: 700px; color: #000; }
-        .input-group { margin-bottom: 30px; }
-        label { display: block; font-weight: 900; font-size: 0.7rem; text-transform: uppercase; margin-bottom: 10px; }
-        input { width: 100%; padding: 15px; border: 2px solid #eee; font-family: inherit; font-weight: 600; }
-
-        .btn {
-            background: #000;
-            color: #fff;
-            padding: 20px 40px;
-            border: none;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            width: 100%;
-        }
-        .btn-naf { background: var(--naf-gold); color: #000; }
-
-        footer { background: #000; color: #fff; padding: 100px 8%; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; }
-        .disclaimer { font-size: 11px; color: #666; margin-top: 60px; padding-top: 30px; border-top: 1px solid #333; }
-
-        .back-link { color: #fff; text-decoration: none; font-weight: 800; font-size: 0.7rem; text-transform: uppercase; margin-bottom: 40px; display: block; }
+        footer { background: #000; color: #fff; padding: 60px 5%; margin-top: 60px; font-size: 0.8rem; }
+        .back-btn { display: inline-block; margin-bottom: 20px; font-weight: 900; cursor: pointer; text-transform: uppercase; font-size: 0.7rem; }
     </style>
 </head>
 <body>
 
-<div class="gov-banner">
-    <span>OFFICIAL PORTAL OF THE NORTHLAND GOVERNMENT</span>
-    <div class="social-indicators">
-        <a href="https://tiktok.com/@northland.gov" target="_blank" class="social-link">
-            <i class="fab fa-tiktok"></i> northland.gov
-        </a>
-        <a href="https://discord.gg/4EdxgchNBM" target="_blank" class="social-link">
-            <i class="fab fa-discord"></i> COMMUNICATION HUB
-        </a>
+<div class="top-id">
+    <span>Government of Northland // Secure Portal</span>
+    <div class="socials">
+        <a href="https://tiktok.com/@northland.gov" target="_blank"><i class="fab fa-tiktok"></i> northland.gov</a>
+        <a href="https://discord.gg/4EdxgchNBM" target="_blank"><i class="fab fa-discord"></i> DISCORD</a>
     </div>
 </div>
 
 <header>
-    <a href="javascript:void(0)" onclick="showPage('home')" class="logo">
-        <img src="https://i.ibb.co/zhg5gddd/Frame-297-1.png" class="flag-img" alt="Seal">
-        <div class="logo-text">
+    <a href="#" onclick="showPage('home')" class="brand">
+        <img src="https://i.ibb.co/zhg5gddd/Frame-297-1.png" alt="Seal">
+        <div class="brand-text">
             <h1>NORTHLAND</h1>
             <span>State Administrative Services</span>
         </div>
     </a>
     <nav>
-        <a onclick="showPage('home')">Overview</a>
+        <a onclick="showPage('home')">Services</a>
         <a onclick="showPage('airforce')">Defense</a>
-        <a onclick="showPage('passport')">Identity</a>
-        <a onclick="showPage('contact')">Archive</a>
+        <a onclick="showPage('passport')">Biometrics</a>
     </nav>
 </header>
 
-<div id="home" class="page-content active">
+<div id="home" class="page active">
     <div class="hero">
-        <h1 id="typewriter-title"></h1>
-        <p>Providing essential digital infrastructure for the citizens and residents of Northland. Access biometric enrollment, defense applications, and legal records.</p>
+        <h1 id="tw"></h1>
+        <p style="max-width: 600px;">Access official biometric enrollment, defense command archives, and state registries for Northland citizens.</p>
     </div>
-    <div class="container">
-        <div class="grid">
-            <div class="card" onclick="showPage('passport')">
-                <p>SERVICE CODE: 01-BIO</p>
-                <h2>E-Passport Enrollment</h2>
-                <p>Register for the official biometric travel document of the Northland sovereign territory.</p>
-                <span class="card-link">Initialize Application →</span>
-            </div>
-            <div class="card" onclick="showPage('airforce')">
-                <p>SERVICE CODE: 02-DEF</p>
-                <h2>Northland Airforce</h2>
-                <p>Military personnel procurement and strategic fleet inventory management portal.</p>
-                <span class="card-link">View Defense Portal →</span>
-            </div>
-            <div class="card" onclick="showPage('immigration')">
-                <p>SERVICE CODE: 03-IMM</p>
-                <h2>Visa & Residency</h2>
-                <p>Legal entry-clearance for the North Atlantic Basin and Schengen-area alignment.</p>
-                <span class="card-link">Access Forms →</span>
-            </div>
+    <div class="service-grid">
+        <div class="service-card" onclick="showPage('passport')">
+            <p style="font-family:'JetBrains Mono'; font-size:10px; color:#888;">NL-BIO-01</p>
+            <h2>Passport Enrollment</h2>
+            <p style="font-size:0.8rem;">Initialize biometric identity verification.</p>
+        </div>
+        <div class="service-card" onclick="showPage('airforce')">
+            <p style="font-family:'JetBrains Mono'; font-size:10px; color:#888;">NL-DEF-02</p>
+            <h2>Defense Command</h2>
+            <p style="font-size:0.8rem;">Strategic fleet inventory and recruitment.</p>
+        </div>
+        <div class="service-card" onclick="alert('Module encrypted.')">
+            <p style="font-family:'JetBrains Mono'; font-size:10px; color:#888;">NL-IMM-03</p>
+            <h2>Visa Registry</h2>
+            <p style="font-size:0.8rem;">Residency and work clearance status.</p>
         </div>
     </div>
 </div>
 
-<div id="airforce" class="page-content">
-    <a class="back-link" onclick="showPage('home')">← EXIT DEFENSE SECURE PORTAL</a>
-    
-    <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 20px;">
+<div id="airforce" class="page">
+    <span class="back-btn" onclick="showPage('home')">← Terminate Connection</span>
+    <div class="tac-header">
         <div>
-            <h1 style="font-size: 3rem; margin:0; font-weight: 900;">NAF STRATEGIC COMMAND</h1>
-            <p style="color: var(--naf-gold); font-weight: 700; margin:0;">DEFENDING NORTH ATLANTIC SOVEREIGNTY</p>
+            <h2 style="font-family:'JetBrains Mono';">NAF STRATEGIC COMMAND</h2>
+            <p style="color:var(--naf-gold); font-size:0.7rem;">STATUS: COMBAT READY</p>
         </div>
-        <img src="https://i.ibb.co/cXg7vqr7/Frame-298-1.png" style="height: 100px;" alt="NAF Seal">
+        <img src="https://i.ibb.co/cXg7vqr7/Frame-298-1.png" style="height:60px;">
     </div>
-
-    <div class="naf-status-bar">
-        <div class="status-item">
-            <span class="status-label">Active Airframes</span>
-            <span class="status-value">64</span>
+    <div class="tac-grid">
+        <div class="asset-card">
+            <div class="asset-img" style="background-image:url('https://i.ibb.co/HTzJqryh/6291322-16x9.avif')"></div>
+            <div class="asset-data"><h3>F-16 VIPER</h3><span class="count">32 UNITS</span></div>
         </div>
-        <div class="status-item">
-            <span class="status-label">Naval Carriers</span>
-            <span class="status-value">03</span>
+        <div class="asset-card">
+            <div class="asset-img" style="background-image:url('https://i.ibb.co/N2V4CYdh/F35-US-military-800x500.jpg')"></div>
+            <div class="asset-data"><h3>F-35B LIGHTNING II</h3><span class="count">12 UNITS</span></div>
         </div>
-        <div class="status-item">
-            <span class="status-label">Readiness Level</span>
-            <span class="status-value">DEFCON 4</span>
+        <div class="asset-card">
+            <div class="asset-img" style="background-image:url('https://i.ibb.co/3GXCXcZ/C-17-test-sortie.jpg')"></div>
+            <div class="asset-data"><h3>C-17 GLOBEMASTER</h3><span class="count">20 UNITS</span></div>
         </div>
-        <div class="status-item">
-            <span class="status-label">Recruitment Status</span>
-            <span class="status-value" style="color: #00ff00;">OPEN</span>
-        </div>
-    </div>
-
-    <div class="fleet-grid">
-        <div class="fleet-card">
-            <div class="fleet-img" style="background-image: url('https://i.ibb.co/HTzJqryh/6291322-16x9.avif');"></div>
-            <div class="fleet-info">
-                <p>Multi-Role Interceptor</p>
-                <h3>F-16 VIPER</h3>
-                <span class="fleet-count">32 UNITS ACTIVE</span>
-            </div>
-        </div>
-        <div class="fleet-card">
-            <div class="fleet-img" style="background-image: url('https://i.ibb.co/N2V4CYdh/F35-US-military-800x500.jpg');"></div>
-            <div class="fleet-info">
-                <p>Stealth Air Superiority</p>
-                <h3>F-35B LIGHTNING II</h3>
-                <span class="fleet-count">12 UNITS ACTIVE</span>
-            </div>
-        </div>
-        <div class="fleet-card">
-            <div class="fleet-img" style="background-image: url('https://i.ibb.co/3GXCXcZ/C-17-test-sortie.jpg');"></div>
-            <div class="fleet-info">
-                <p>Strategic Logistic Lift</p>
-                <h3>C-17 GLOBEMASTER III</h3>
-                <span class="fleet-count">20 UNITS ACTIVE</span>
-            </div>
-        </div>
-        <div class="fleet-card">
-            <div class="fleet-img" style="background-image: url('https://i.ibb.co/gMzqnc1s/USS-Gerald-R-Ford-CVN-78-underway-in-the-Atlantic-Ocean-on-9-October-2022-221009-N-TL968-1248.jpg');"></div>
-            <div class="fleet-info">
-                <p>Naval Strike Platform</p>
-                <h3>AIRCRAFT CARRIERS</h3>
-                <span class="fleet-count">03 VESSELS ACTIVE</span>
-            </div>
+        <div class="asset-card">
+            <div class="asset-img" style="background-image:url('https://i.ibb.co/gMzqnc1s/USS-Gerald-R-Ford-CVN-78-underway-in-the-Atlantic-Ocean-on-9-October-2022-221009-N-TL968-1248.jpg')"></div>
+            <div class="asset-data"><h3>AIRCRAFT CARRIER</h3><span class="count">03 VESSELS</span></div>
         </div>
     </div>
-
-    <div style="margin-top: 60px; border: 1px solid var(--naf-gold); padding: 40px; background: rgba(0,0,0,0.5);">
-        <h2 style="margin-top:0;">RECRUITMENT APPLICATION</h2>
-        <p>The Northland Airforce is seeking elite pilots and technicians. All applicants must hold valid Northland Citizenship or permanent residency status.</p>
-        <button class="btn btn-naf" style="width: auto;" onclick="window.open('https://forms.gle/ekY4yTFKjYxHGmoZ7', '_blank')">INITIALIZE ENLISTMENT PAPERS</button>
-    </div>
+    <button class="btn" style="margin-top:30px; background:var(--naf-gold); color:#000;" onclick="window.open('https://forms.gle/ekY4yTFKjYxHGmoZ7')">OPEN RECRUITMENT FORM</button>
 </div>
 
-<div id="passport" class="page-content">
-    <a class="back-link" style="color:#000" onclick="showPage('home')">← RETURN TO DIRECTORY</a>
-    <h1 style="font-size: 3rem; font-weight: 900;">PASSPORT ENROLLMENT</h1>
-    <div class="form-box">
-        <div class="input-group">
-            <label>Legal Full Name</label>
-            <input type="text" id="pass-name" placeholder="SURNAME, GIVEN NAMES">
+<div id="passport" class="page">
+    <span class="back-btn" style="color:#000" onclick="showPage('home')">← Return to Directory</span>
+    <h1 style="margin-bottom:30px;">IDENTITY REGISTRY</h1>
+    <div style="max-width:500px;">
+        <div class="input-box"><label>Username</label><input type="text" id="uname" placeholder="IDENTIFIER"></div>
+        <div class="input-box"><label>Date of Birth</label><input type="date" id="udob"></div>
+        <div class="input-box"><label>Secure Email</label><input type="email" id="uemail" placeholder="registry@northland.gov"></div>
+        <button class="btn" id="sbtn" onclick="enroll()">Archive Credentials</button>
+    </div>
+    <div id="id-result">
+        <div class="id-card">
+            <div style="border-bottom:2px solid #000; padding-bottom:10px; display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-weight:900; font-size:0.7rem;">NORTHLAND IDENTITY CARD</span>
+                <img src="https://i.ibb.co/zhg5gddd/Frame-297-1.png" style="height:20px;">
+            </div>
+            <div class="id-body">
+                <div class="id-photo"><i class="fas fa-user-shield"></i></div>
+                <div class="id-info">
+                    <p style="font-size:10px; font-weight:700; color:#888;">NAME</p><span id="id-name">---</span>
+                    <p style="font-size:10px; font-weight:700; color:#888;">ID NUMBER</p><span id="id-num" style="font-family:'JetBrains Mono';">NL-000000</span>
+                </div>
+            </div>
         </div>
-        <div class="input-group">
-            <label>Biometric Date of Birth</label>
-            <input type="date" id="pass-dob">
-        </div>
-        <div class="input-group">
-            <label>Verified Email Address</label>
-            <input type="email" id="pass-email" placeholder="name@gov.northland">
-        </div>
-        <button class="btn" id="generate-btn" onclick="generatePassport()">PROCESS & LOG APPLICATION</button>
     </div>
 </div>
-
-<div id="contact" class="page-content"><a class="back-link" style="color:#000" onclick="showPage('home')">← BACK</a><h1>Archive Support</h1><p>Registry: northlandgov@gmail.com</p></div>
 
 <footer>
-    <div class="footer-grid">
-        <div>
-            <h2 style="font-weight: 900; letter-spacing: -1px;">NORTHLAND</h2>
-            <p style="color: #666;">Official Government Information Service (OGIS)</p>
-            <div style="margin-top: 20px; display: flex; gap: 20px;">
-                <a href="https://tiktok.com/@northland.gov" target="_blank" style="color:#fff; font-size: 1.2rem;"><i class="fab fa-tiktok"></i></a>
-                <a href="https://discord.gg/4EdxgchNBM" target="_blank" style="color:#fff; font-size: 1.2rem;"><i class="fab fa-discord"></i></a>
-            </div>
-        </div>
-        <div>
-            <p style="font-weight: 800; font-size: 0.7rem; text-transform: uppercase;">Divisions</p>
-            <p>Interior Ministry<br>Defense Command<br>Biometric Registry</p>
-        </div>
-        <div>
-            <p style="font-weight: 800; font-size: 0.7rem; text-transform: uppercase;">Legal</p>
-            <p>Privacy Policy<br>Terms of Service<br>EU Mandates</p>
-        </div>
-    </div>
-    <div class="disclaimer">
-        <strong>FICTIONAL CONTEXT:</strong> NORTHLAND IS A FICTIONAL NATION CREATED FOR WORLD-BUILDING PURPOSES. NO LEGAL DOCUMENTS ISSUED BY THIS PORTAL ARE RECOGNIZED BY UN MEMBER STATES.
-    </div>
+    <p>Official Government Information Service (OGIS) // FICTIONAL ROLEPLAY CONTENT</p>
 </footer>
 
 <script>
     (function(){ emailjs.init("ZajunZy7xtegWj6gQ"); })();
-
-    const text = "Northland Government";
-    let i = 0;
-    function typeWriter() {
-        if (i < text.length) {
-            document.getElementById("typewriter-title").innerHTML += text.charAt(i);
-            i++;
-            setTimeout(typeWriter, 100);
-        }
-    }
-    window.onload = typeWriter;
-
-    function showPage(pageId) {
-        document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
-        document.getElementById(pageId).classList.add('active');
-        window.scrollTo(0,0);
-    }
-
-    function generatePassport() {
-        const name = document.getElementById('pass-name').value.toUpperCase();
-        const dob = document.getElementById('pass-dob').value;
-        const userEmail = document.getElementById('pass-email').value;
-        const btn = document.getElementById('generate-btn');
-
-        if(!name || !dob || !userEmail) return alert("Error: Incomplete credentials.");
-        btn.innerText = "ENCRYPTING DATA...";
-        btn.disabled = true;
-
-        const num = "NL" + Math.floor(100000 + Math.random() * 900000);
-        const mrz = `P<NOR${name.replace(/\s/g, "<<")}<<<<<<<<<<<<<<<<<<${num}`;
-
-        emailjs.send('service_s17t8qu', 'template_o0p4w9o', {
-            to_name: name,
-            user_email: userEmail,
-            passport_num: num,
-            dob: dob,
-            mrz_data: mrz
-        }).then(function() {
-            alert("Digital record established and transmitted to " + userEmail);
-            btn.innerText = "RECORD ARCHIVED";
-        }, function(error) {
-            alert("Security handshake failure.");
-            btn.innerText = "RE-ATTEMPT";
-            btn.disabled = false;
+    const t = "Northland Government"; let i = 0;
+    function type() { if(i < t.length) { document.getElementById("tw").innerHTML += t.charAt(i); i++; setTimeout(type, 100); } }
+    window.onload = type;
+    function showPage(id) { document.querySelectorAll('.page').forEach(p => p.classList.remove('active')); document.getElementById(id).classList.add('active'); window.scrollTo(0,0); }
+    function enroll() {
+        const n = document.getElementById('uname').value.toUpperCase();
+        const d = document.getElementById('udob').value;
+        const e = document.getElementById('uemail').value;
+        const b = document.getElementById('sbtn');
+        if(!n || !d || !e) return alert("Fields missing.");
+        b.innerText = "PROCESSING..."; b.disabled = true;
+        const idn = "NL-" + Math.floor(100000 + Math.random() * 900000);
+        emailjs.send('service_s17t8qu', 'template_o0p4w9o', { to_name: n, user_email: e, passport_num: idn, dob: d, mrz_data: `P<NOR${n.replace(/\s/g, "<<")}<<<<${idn}` }).then(() => {
+            document.getElementById('id-name').innerText = n;
+            document.getElementById('id-num').innerText = idn;
+            document.getElementById('id-result').style.display = 'block';
+            b.innerText = "RECORD ARCHIVED";
         });
     }
 </script>
