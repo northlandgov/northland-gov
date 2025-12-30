@@ -3,334 +3,321 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Northland Official Government</title>
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>Northland | Official Government Portal</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
+            --eu-blue: #003399;
             --north-blue: #87CEFA;
-            --bg-main: #f2f4f6; 
-            --bg-card: #ffffff;
-            --text-dark: #1a1a1a;
-            --border-color: #e0e0e0;
+            --gov-black: #1a1a1a;
+            --gov-bg: #f8f9fa;
+            --gov-border: #d1d5db;
+            --accent: #2563eb;
         }
 
-        * { box-sizing: border-box; }
+        * { box-sizing: border-box; transition: all 0.2s ease-in-out; }
 
         body {
-            font-family: 'Urbanist', sans-serif;
+            font-family: 'Inter', sans-serif;
             margin: 0;
-            background-color: var(--bg-main);
-            color: var(--text-dark);
-            line-height: 1.6;
-            -webkit-tap-highlight-color: transparent;
+            background-color: var(--gov-bg);
+            color: var(--gov-black);
+            line-height: 1.5;
         }
 
-        /* Mobile Responsive Header */
+        /* Top Security Banner */
+        .gov-banner {
+            background: #e5e7eb;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 8px 5%;
+            border-bottom: 1px solid var(--gov-border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
         header {
-            padding: 20px 5%;
+            padding: 30px 8%;
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            align-items: center;
-            background: var(--bg-card);
-            text-align: center;
+            gap: 20px;
+            background: white;
+            border-bottom: 3px solid var(--eu-blue);
         }
 
         @media (min-width: 768px) {
-            header {
-                padding: 25px 8%;
-                flex-direction: row;
-                justify-content: space-between;
-                text-align: left;
-            }
+            header { flex-direction: row; justify-content: space-between; align-items: center; }
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-weight: 800;
-            font-size: 1.2rem;
-            text-decoration: none;
-            color: var(--north-blue);
-            text-transform: uppercase;
-        }
-
-        .flag-img {
-            height: 35px;
-            border-radius: 0; 
-            border: 1px solid var(--border-color);
-        }
-
-        nav {
-            display: flex;
             gap: 15px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        nav a {
-            color: var(--text-dark);
             text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
+            color: var(--gov-black);
         }
 
-        /* Hero Section Scaling */
+        .logo-text {
+            border-left: 2px solid var(--gov-border);
+            padding-left: 15px;
+        }
+
+        .logo-text h1 { margin: 0; font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; }
+        .logo-text span { font-size: 0.75rem; color: #666; font-weight: 600; display: block; }
+
+        .flag-img { height: 45px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+
+        nav { display: flex; gap: 30px; }
+        nav a { 
+            color: var(--gov-black); 
+            text-decoration: none; 
+            font-size: 0.85rem; 
+            font-weight: 700; 
+            padding: 5px 0;
+            border-bottom: 2px solid transparent;
+        }
+        nav a:hover { border-bottom: 2px solid var(--eu-blue); color: var(--eu-blue); }
+
         .hero {
-            padding: 50px 5%;
-            background-color: var(--bg-main);
-            text-align: center;
-        }
-
-        @media (min-width: 768px) {
-            .hero {
-                padding: 80px 8%;
-                text-align: left;
-            }
+            background: white;
+            padding: 80px 8%;
+            border-bottom: 1px solid var(--gov-border);
         }
 
         .hero h1 {
-            font-size: 2.8rem; /* Smaller for mobile */
-            margin: 0;
-            color: var(--north-blue);
+            font-size: 3.5rem;
             font-weight: 800;
-            letter-spacing: -0.02em;
-            min-height: 1.2em;
-            word-break: break-word;
+            margin: 0 0 10px 0;
+            color: var(--gov-black);
+            letter-spacing: -1px;
         }
 
-        @media (min-width: 768px) {
-            .hero h1 { font-size: 4rem; }
-        }
+        .container { padding: 60px 8%; max-width: 1300px; margin: 0 auto; }
 
-        .hero p {
-            font-size: 1rem;
-            max-width: 600px;
-        }
-
-        /* Responsive Grid */
-        .container {
-            padding: 30px 5%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        @media (min-width: 768px) {
-            .container { padding: 60px 8%; }
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr; /* Stack on mobile */
-            gap: 20px;
-        }
-
-        @media (min-width: 640px) {
-            .grid { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        @media (min-width: 1024px) {
-            .grid { grid-template-columns: repeat(3, 1fr); }
-        }
+        /* Professional Service Cards */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
 
         .card {
-            background: var(--bg-card);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            background: white;
+            padding: 40px;
+            border: 1px solid var(--gov-border);
+            border-top: 4px solid var(--gov-border);
             cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
         }
 
-        .card:active { transform: scale(0.98); } /* Feedback for touch */
-
-        @media (min-width: 768px) {
-            .card:hover {
-                transform: translateY(-8px);
-                box-shadow: 0 15px 30px rgba(0,0,0,0.06);
-            }
+        .card:hover {
+            border-top-color: var(--eu-blue);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transform: translateY(-2px);
         }
 
-        .card h2 {
-            margin-top: 0;
-            font-size: 1.4rem;
-            color: var(--north-blue);
-        }
+        .card h2 { font-size: 1.25rem; margin-top: 0; font-weight: 800; }
+        .card p { color: #4b5563; font-size: 0.95rem; }
 
-        /* Page Content */
-        .page-content { 
-            display: none; 
-            padding: 40px 5%; 
-            max-width: 1000px; 
-            margin: 0 auto; 
-        }
+        /* Official Forms */
+        .page-content { display: none; padding: 60px 8%; max-width: 900px; margin: 0 auto; }
         .active { display: block; }
 
+        .form-box {
+            background: white;
+            padding: 40px;
+            border: 1px solid var(--gov-border);
+        }
+
+        .input-group { margin-bottom: 25px; }
+        label { display: block; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 8px; color: #374151; }
+        input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid var(--gov-border);
+            background: #f9fafb;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        input:focus { outline: none; border-color: var(--eu-blue); background: white; }
+
         .btn {
-            background-color: var(--north-blue);
+            background: var(--eu-blue);
             color: white;
-            padding: 14px 28px;
-            width: 100%; /* Full width on mobile */
-            text-align: center;
-            text-decoration: none;
-            font-weight: 700;
-            display: inline-block;
-            margin-top: 25px;
+            padding: 16px 32px;
             border: none;
-            border-radius: 30px;
-            cursor: pointer;
-        }
-
-        @media (min-width: 480px) {
-            .btn { width: auto; }
-        }
-
-        .back-btn {
-            color: var(--north-blue);
-            text-decoration: none;
-            display: block;
-            margin-bottom: 30px;
             font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
             cursor: pointer;
+            width: 100%;
+        }
+        .btn:hover { background: #002266; }
+
+        .back-link { 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px; 
+            text-decoration: none; 
+            color: var(--eu-blue); 
+            font-weight: 700; 
+            margin-bottom: 30px; 
         }
 
         footer {
-            padding: 40px 5%;
-            text-align: center;
-            font-size: 0.85rem;
-            background-color: var(--bg-main);
+            background: var(--gov-black);
+            color: white;
+            padding: 80px 8%;
+            margin-top: 100px;
         }
 
         .disclaimer {
-            margin-top: 20px;
-            padding: 15px;
-            border: 1px dashed #ccc;
-            border-radius: 15px;
-            color: #888;
-            font-size: 0.75rem;
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            font-size: 11px;
+            color: #9ca3af;
+            border-left: 2px solid var(--north-blue);
         }
     </style>
 </head>
 <body>
 
+<div class="gov-banner">
+    <span style="color: green;">●</span> Secure .gov connection verified | European Union Member State
+</div>
+
 <header>
     <a href="javascript:void(0)" onclick="showPage('home')" class="logo">
-        <img src="https://i.ibb.co/zhg5gddd/Frame-297-1.png" class="flag-img" alt="Northland Flag">
-        Northland Government
+        <img src="https://i.ibb.co/zhg5gddd/Frame-297-1.png" class="flag-img" alt="Seal">
+        <div class="logo-text">
+            <h1>NORTHLAND</h1>
+            <span>OFFICIAL GOVERNMENT PORTAL</span>
+        </div>
     </a>
     <nav>
-        <a onclick="showPage('about')">About</a>
-        <a onclick="showPage('laws')">Laws</a>
-        <a onclick="showPage('contact')">Contact</a>
+        <a onclick="showPage('about')">National Identity</a>
+        <a onclick="showPage('laws')">Legal Framework</a>
+        <a onclick="showPage('contact')">Admin Support</a>
     </nav>
 </header>
 
 <div id="home" class="page-content active">
     <div class="hero">
         <h1 id="typewriter-title"></h1>
-        <p>EU Member State | Strategic North Atlantic Security Hub</p>
+        <p style="font-size: 1.2rem; color: #4b5563;">Official administrative services for citizens, residents, and visitors of the Northland sovereign territory.</p>
     </div>
-
     <div class="container">
         <div class="grid">
-            <div class="card" onclick="showPage('airforce')">
-                <h2>Join the Airforce</h2>
-                <p>Official NAF recruitment portal for maritime and airspace defense.</p>
-            </div>
             <div class="card" onclick="showPage('passport')">
-                <h2>E-Passport</h2>
-                <p>EU-standard biometric ID services for all Northland citizens.</p>
+                <h2>E-Passport Enrollment</h2>
+                <p>Digital biometric registration for the issuance of EU-standard Northland travel documents.</p>
+            </div>
+            <div class="card" onclick="showPage('airforce')">
+                <h2>Defense Recruitment</h2>
+                <p>Personnel enrollment for the Northland Airforce (NAF) and maritime security divisions.</p>
             </div>
             <div class="card" onclick="showPage('immigration')">
-                <h2>E-Visas</h2>
-                <p>Gateway for Schengen-aligned travel and residency requests.</p>
-            </div>
-            <div class="card" onclick="showPage('laws')">
-                <h2>Laws</h2>
-                <p>Constitution and North Atlantic Maritime Directives.</p>
-            </div>
-            <div class="card" onclick="showPage('about')">
-                <h2>About Us</h2>
-                <p>Our history and location between the UK and Iceland.</p>
-            </div>
-            <div class="card" onclick="showPage('contact')">
-                <h2>Contact Us</h2>
-                <p>Reach official departments for administrative support.</p>
+                <h2>Visa & Immigration</h2>
+                <p>Schengen-area residency applications and digital entry-clearance authorizations.</p>
             </div>
         </div>
     </div>
 </div>
 
-<div id="airforce" class="page-content">
-    <a class="back-btn" onclick="showPage('home')">← Back to Portal</a>
-    <h1>Join the Airforce</h1>
-    <p>The Northland Airforce (NAF) is recruiting personnel for maritime patrol.</p>
-    <button class="btn" onclick="location.href='https://forms.gle/ekY4yTFKjYxHGmoZ7'">Access Recruitment Form</button>
-</div>
-
-<div id="about" class="page-content">
-    <a class="back-btn" onclick="showPage('home')">← Back</a>
-    <h1>About Northland</h1>
-    <p>Sovereign nation and EU Member State located between the UK and Iceland.</p>
-</div>
-
-<div id="contact" class="page-content">
-    <a class="back-btn" onclick="showPage('home')">← Back</a>
-    <h1>Contact Us</h1>
-    <p>Email: <strong>northlandgov@gmail.com</strong></p>
-</div>
-
-<div id="laws" class="page-content">
-    <a class="back-btn" onclick="showPage('home')">← Back</a>
-    <h1>National Laws</h1>
-    <p>Constitution and European Union Integration Mandates.</p>
-</div>
-
 <div id="passport" class="page-content">
-    <a class="back-btn" onclick="showPage('home')">← Back</a>
-    <h1>E-Passport</h1>
-    <p>Citizen biometric documentation portal.</p>
+    <a class="back-link" onclick="showPage('home')">← RETURN TO MAIN PORTAL</a>
+    <h1 style="font-size: 2.5rem; font-weight: 800;">E-Passport Application</h1>
+    <p>Submit legal identity credentials for biometric processing.</p>
+    
+    <div class="form-box">
+        <div class="input-group">
+            <label>Legal Full Name (As shown on birth record)</label>
+            <input type="text" id="pass-name" placeholder="SURNAME, GIVEN NAMES">
+        </div>
+        <div class="input-group">
+            <label>Date of Birth</label>
+            <input type="date" id="pass-dob">
+        </div>
+        <div class="input-group">
+            <label>Registered Email Address</label>
+            <input type="email" id="pass-email" placeholder="name@example.com">
+        </div>
+        <button class="btn" id="generate-btn" onclick="generatePassport()">Validate & Submit Record</button>
+    </div>
 </div>
 
-<div id="immigration" class="page-content">
-    <a class="back-btn" onclick="showPage('home')">← Back</a>
-    <h1>E-Visa Services</h1>
-    <p>Schengen-aligned visa applications.</p>
-</div>
+<div id="airforce" class="page-content"><a class="back-link" onclick="showPage('home')">← BACK</a><h1>NAF Recruitment</h1><button class="btn" onclick="window.open('https://forms.gle/ekY4yTFKjYxHGmoZ7', '_blank')">OPEN OFFICIAL APPLICATION</button></div>
+<div id="about" class="page-content"><a class="back-link" onclick="showPage('home')">← BACK</a><h1>National Identity</h1><p>Sovereign territory located in the North Atlantic Basin.</p></div>
+<div id="laws" class="page-content"><a class="back-link" onclick="showPage('home')">← BACK</a><h1>Legislation</h1><p>Constitution of the Republic and Maritime Directives.</p></div>
+<div id="contact" class="page-content"><a class="back-link" onclick="showPage('home')">← BACK</a><h1>Contact Support</h1><p>Direct Inquiries: northlandgov@gmail.com</p></div>
+<div id="immigration" class="page-content"><a class="back-link" onclick="showPage('home')">← BACK</a><h1>Immigration Services</h1><p>Schengen Zone Entry-Exit System.</p></div>
 
 <footer>
-    <p>© 2025 Northland Government | EU Member State</p>
+    <div style="margin-bottom: 40px;">
+        <h2 style="margin: 0;">NORTHLAND</h2>
+        <p style="color: #9ca3af;">Government Information Service</p>
+    </div>
     <div class="disclaimer">
-        <strong>FICTIONAL CONTENT:</strong> Northland is a fictional entity for world-building. This site provides no real-world services.
+        <strong>LEGAL DISCLOSURE:</strong> Northland is a fictional nation created for world-building purposes. 
+        This portal does not issue real-world travel documents or represent a recognized UN sovereign state.
+        All data processed is for roleplay simulation only.
     </div>
 </footer>
 
 <script>
-    const text = "Northland";
-    const speed = 120;
-    let i = 0;
+    (function(){ emailjs.init("ZajunZy7xtegWj6gQ"); })();
 
+    const text = "Northland";
+    let i = 0;
     function typeWriter() {
         if (i < text.length) {
             document.getElementById("typewriter-title").innerHTML += text.charAt(i);
             i++;
-            setTimeout(typeWriter, speed);
+            setTimeout(typeWriter, 150);
         }
     }
-
     window.onload = typeWriter;
 
     function showPage(pageId) {
         document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
-        const target = document.getElementById(pageId);
-        if(target) {
-            target.classList.add('active');
-            window.scrollTo(0,0);
-        }
+        document.getElementById(pageId).classList.add('active');
+        window.scrollTo(0,0);
+    }
+
+    function generatePassport() {
+        const name = document.getElementById('pass-name').value.toUpperCase();
+        const dob = document.getElementById('pass-dob').value;
+        const userEmail = document.getElementById('pass-email').value;
+        const btn = document.getElementById('generate-btn');
+
+        if(!name || !dob || !userEmail) return alert("All identity fields must be completed.");
+        
+        btn.innerText = "PROCESSING BIOMETRICS...";
+        btn.disabled = true;
+
+        const num = "NL" + Math.floor(100000 + Math.random() * 900000);
+        const mrz = `P<NOR${name.replace(/\s/g, "<<")}<<<<<<<<<<<<<<<<<<${num}`;
+
+        const templateParams = {
+            to_name: name,
+            user_email: userEmail,
+            passport_num: num,
+            dob: dob,
+            mrz_data: mrz
+        };
+
+        emailjs.send('service_s17t8qu', 'template_o0p4w9o', templateParams)
+            .then(function() {
+                alert("APPLICATION SUCCESSFUL. A digital copy of your enrollment record has been dispatched to " + userEmail);
+                btn.innerText = "SUBMITTED TO REGISTRY";
+            }, function(error) {
+                console.error(error);
+                alert("Handshake Failure: Identity server timed out.");
+                btn.innerText = "RE-ATTEMPT SUBMISSION";
+                btn.disabled = false;
+            });
     }
 </script>
-
 </body>
 </html>
